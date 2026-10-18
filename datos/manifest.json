@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "rows_raw": 569,
+  "rows_clean": 569,
+  "duplicates_removed": 0,
+  "missing_cells": 0,
+  "source": "sklearn.datasets.load_breast_cancer; UCI WDBC, DOI 10.24432/C5DW2B",
+  "positive_class": "malignant=1",
+  "files": {
+    "datos/datos_ini/wdbc_v1.csv": "0109cdea5385ddcd7f094bd8fc8e2c6177436cd360c55f0d555cf65c4609f178",
+    "datos/datos_limp/wdbc_v1_clean.csv": "0109cdea5385ddcd7f094bd8fc8e2c6177436cd360c55f0d555cf65c4609f178"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "train_cells_outside_IQR_fences": 494,
+  "corr_radius_perimeter": 0.9978146993019575,
+  "missing_cells": 0,
+  "duplicates_removed": 0
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "run_id": "c07084acc4e8464fa6fc84545303e056",
+    "status": "FINISHED",
+    "experiment_id": "447492587708866394",
+    "name": "RandomForest",
+    "params": {
+      "code_sha256": "71d5d555dfd3cfc7c5fec6364c7db777de2b68fdc3fc968fe4474c54c1c0a2f6",
+      "seed": "42",
+      "test_rows": "114",
+      "refit": "f1",
+      "model__min_samples_leaf": "1",
+      "model__n_estimators": "100",
+      "threshold": "0.5",
+      "train_rows": "455",
+      "model__class_weight": "None",
+      "model__max_depth": "5",
+      "cv_folds": "5",
+      "raw_sha256": "0109cdea5385ddcd7f094bd8fc8e2c6177436cd360c55f0d555cf65c4609f178"
+    },
+    "metrics": {
+      "cv_f1_mean": 0.9552850541704228,
+      "recall": 0.9285714285714286,
+      "cv_f1_std": 0.028428782323796545,
+      "roc_auc": 0.9950396825396824,
+      "precision": 1.0,
+      "accuracy": 0.9736842105263158,
+      "f1": 0.9629629629629629,
+      "fit_seconds": 15.94735499300009
+    },
+    "tags": {
+      "mlflow.source.name": "Actividad5/fuentes/train.py",
+      "positive_class": "malignant",
+      "mlflow.runName": "RandomForest",
+      "purpose": "academic",
+      "mlflow.user": "root",
+      "mlflow.source.type": "LOCAL",
+      "dataset_version": "1.0.0"
+    },
+    "artifacts": [
+      "grid_RandomForest.csv",
+      "manifest.json",
+      "resultados",
+      "split.csv",
+      "train.py"
+    ]
+  },
+  {
+    "run_id": "e08052038fd44c828c662389a44fca91",
+    "status": "FINISHED",
+    "experiment_id": "447492587708866394",
+    "name": "LogisticRegression",
+    "params": {
+      "code_sha256": "71d5d555dfd3cfc7c5fec6364c7db777de2b68fdc3fc968fe4474c54c1c0a2f6",
+      "seed": "42",
+      "model__C": "0.1",
+      "test_rows": "114",
+      "refit": "f1",
+      "threshold": "0.5",
+      "train_rows": "455",
+      "model__class_weight": "balanced",
+      "cv_folds": "5",
+      "raw_sha256": "0109cdea5385ddcd7f094bd8fc8e2c6177436cd360c55f0d555cf65c4609f178"
+    },
+    "metrics": {
+      "cv_f1_mean": 0.9674210903168416,
+      "recall": 0.9761904761904762,
+      "cv_f1_std": 0.01090344503517045,
+      "roc_auc": 0.9976851851851852,
+      "precision": 1.0,
+      "accuracy": 0.9912280701754386,
+      "f1": 0.9879518072289156,
+      "fit_seconds": 2.6447526069999867
+    },
+    "tags": {
+      "mlflow.source.name": "Actividad5/fuentes/train.py",
+      "positive_class": "malignant",
+      "mlflow.runName": "LogisticRegression",
+      "purpose": "academic",
+      "mlflow.user": "root",
+      "mlflow.source.type": "LOCAL",
+      "dataset_version": "1.0.0"
+    },
+    "artifacts": [
+      "grid_LogisticRegression.csv",
+      "manifest.json",
+      "resultados",
+      "split.csv",
+      "train.py"
+    ]
+  }
+]

@@ -1,0 +1,32 @@
+variable,tipo,definicion,resumen,unidad
+mean radius,numérica continua,Media de distancias del centro al perímetro,media,escala del dataset; sin conversión física inferida
+mean texture,numérica continua,Desviación estándar de intensidades de gris,media,escala del dataset; sin conversión física inferida
+mean perimeter,numérica continua,Perímetro del núcleo,media,escala del dataset; sin conversión física inferida
+mean area,numérica continua,Área del núcleo,media,escala del dataset; sin conversión física inferida
+mean smoothness,numérica continua,Variación local de longitudes radiales,media,escala del dataset; sin conversión física inferida
+mean compactness,numérica continua,perímetro²/área - 1,media,escala del dataset; sin conversión física inferida
+mean concavity,numérica continua,Severidad de concavidades,media,escala del dataset; sin conversión física inferida
+mean concave points,numérica continua,Número de porciones cóncavas,media,escala del dataset; sin conversión física inferida
+mean symmetry,numérica continua,Simetría del núcleo,media,escala del dataset; sin conversión física inferida
+mean fractal dimension,numérica continua,Aproximación de dimensión fractal,media,escala del dataset; sin conversión física inferida
+radius error,numérica continua,Media de distancias del centro al perímetro,error estándar,escala del dataset; sin conversión física inferida
+texture error,numérica continua,Desviación estándar de intensidades de gris,error estándar,escala del dataset; sin conversión física inferida
+perimeter error,numérica continua,Perímetro del núcleo,error estándar,escala del dataset; sin conversión física inferida
+area error,numérica continua,Área del núcleo,error estándar,escala del dataset; sin conversión física inferida
+smoothness error,numérica continua,Variación local de longitudes radiales,error estándar,escala del dataset; sin conversión física inferida
+compactness error,numérica continua,perímetro²/área - 1,error estándar,escala del dataset; sin conversión física inferida
+concavity error,numérica continua,Severidad de concavidades,error estándar,escala del dataset; sin conversión física inferida
+concave points error,numérica continua,Número de porciones cóncavas,error estándar,escala del dataset; sin conversión física inferida
+symmetry error,numérica continua,Simetría del núcleo,error estándar,escala del dataset; sin conversión física inferida
+fractal dimension error,numérica continua,Aproximación de dimensión fractal,error estándar,escala del dataset; sin conversión física inferida
+worst radius,numérica continua,Media de distancias del centro al perímetro,media de los tres valores mayores,escala del dataset; sin conversión física inferida
+worst texture,numérica continua,Desviación estándar de intensidades de gris,media de los tres valores mayores,escala del dataset; sin conversión física inferida
+worst perimeter,numérica continua,Perímetro del núcleo,media de los tres valores mayores,escala del dataset; sin conversión física inferida
+worst area,numérica continua,Área del núcleo,media de los tres valores mayores,escala del dataset; sin conversión física inferida
+worst smoothness,numérica continua,Variación local de longitudes radiales,media de los tres valores mayores,escala del dataset; sin conversión física inferida
+worst compactness,numérica continua,perímetro²/área - 1,media de los tres valores mayores,escala del dataset; sin conversión física inferida
+worst concavity,numérica continua,Severidad de concavidades,media de los tres valores mayores,escala del dataset; sin conversión física inferida
+worst concave points,numérica continua,Número de porciones cóncavas,media de los tres valores mayores,escala del dataset; sin conversión física inferida
+worst symmetry,numérica continua,Simetría del núcleo,media de los tres valores mayores,escala del dataset; sin conversión física inferida
+worst fractal dimension,numérica continua,Aproximación de dimensión fractal,media de los tres valores mayores,escala del dataset; sin conversión física inferida
+malignant,entero binario,1 maligno; 0 benigno; recodifica target de sklearn,objetivo,clase

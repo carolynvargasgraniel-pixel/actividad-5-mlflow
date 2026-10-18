@@ -1,0 +1,3 @@
+model,accuracy,precision,recall,f1,roc_auc,cv_f1_mean,cv_f1_std,fit_seconds,params
+LogisticRegression,0.9912280701754386,1.0,0.9761904761904762,0.9879518072289156,0.9976851851851852,0.9674210903168416,0.01090344503517045,2.6447526069999867,"{""model__C"": 0.1, ""model__class_weight"": ""balanced""}"
+RandomForest,0.9736842105263158,1.0,0.9285714285714286,0.9629629629629629,0.9950396825396824,0.9552850541704228,0.028428782323796545,15.94735499300009,"{""model__class_weight"": null, ""model__max_depth"": 5, ""model__min_samples_leaf"": 1, ""model__n_estimators"": 100}"

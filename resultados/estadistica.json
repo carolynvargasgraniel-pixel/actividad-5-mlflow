@@ -1,0 +1,35 @@
+{
+  "bootstrap_iterations": 2000,
+  "delta_f1_LR_minus_RF_95ci": [
+    0.0,
+    0.06452087286527516
+  ],
+  "discordant_LR_only_correct": 2,
+  "discordant_RF_only_correct": 0,
+  "mcnemar_exact_p": 0.5,
+  "cv_fold_f1": {
+    "LogisticRegression": [
+      0.9696969696969697,
+      0.9565217391304348,
+      0.9850746268656716,
+      0.9552238805970149,
+      0.9705882352941176
+    ],
+    "RandomForest": [
+      0.9552238805970149,
+      1.0,
+      0.9230769230769231,
+      0.927536231884058,
+      0.9705882352941176
+    ]
+  },
+  "run_ids": {
+    "LogisticRegression": "e08052038fd44c828c662389a44fca91",
+    "RandomForest": "c07084acc4e8464fa6fc84545303e056"
+  },
+  "n_train": 455,
+  "n_test": 114,
+  "train_positive": 170,
+  "test_positive": 42,
+  "best_by_cv": "LogisticRegression"
+}
