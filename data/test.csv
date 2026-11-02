@@ -1,0 +1,19 @@
+texto,categoria
+La transferencia no aparece en destino,no_acreditado
+El beneficiario no recibio el deposito,no_acreditado
+Pago sin acreditacion en cuenta receptora,no_acreditado
+Necesito rastrear el abono no recibido,no_acreditado
+El importe enviado sigue sin reflejarse,no_acreditado
+El deposito no llega a la cuenta,no_acreditado
+Me hicieron doble cargo del pago,duplicado
+Hay una transferencia duplicada,duplicado
+El pago se cobro dos veces,duplicado
+Aparecen dos cargos del mismo importe,duplicado
+El movimiento se repitio en la cuenta,duplicado
+Tengo dos pagos identicos,duplicado
+Pido reembolso del pago rechazado,devolucion
+Solicito reintegro de transferencia cancelada,devolucion
+La cuenta invalida devolvio la transferencia,devolucion
+Quiero recuperar el pago devuelto,devolucion
+La operacion rechazada requiere devolucion,devolucion
+Necesito devolver el importe cancelado,devolucion

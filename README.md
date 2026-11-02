@@ -1,60 +1,43 @@
-# Actividad 5 · Experimentos reproducibles con MLflow
+# Fase II Asistente para aclaraciones de pagos
 
-Clasificación binaria de WDBC mediante regresión logística y Random Forest. Ejercicio académico; no es un sistema validado para uso clínico.
+Prototipo académico que continúa el business case de Fase I. Clasifica textos simulados en no_acreditado, duplicado o devolucion; recupera una regla académica y prepara un borrador fijo para revisión humana. No consulta sistemas bancarios ni ejecuta pagos. El clasificador es Naive Bayes multinomial entrenado con 36 textos sintéticos. No es un modelo generativo: esta fase implementa el componente de clasificación y la integración; no implementa extracción de PDF ni consulta transaccional de la solución completa planteada en Fase I.
 
-## Entregables
-- [Reporte técnico en PDF](Reporte_tecnico_Actividad5.pdf)
-- [Reporte técnico editable en Word](Reporte_tecnico_Actividad5.docx)
-- [Cuaderno autónomo para Colab o Jupyter](fuentes/entrena.ipynb)
-- [Comparación de resultados](resultados/comparacion.csv)
-- [Evidencias de MLflow](evidencias/)
+## Arquitectura e integración
+Navegador (app/index.html) → POST /predict → clasificador (model/modelo.json) → regla asociada → JSON → navegador. La interfaz y la API usan el mismo origen y puerto; no requieren CORS. GET /health verifica disponibilidad y versión del modelo. No hay dependencias de pip ni claves de servicios.
 
-## Estructura
-- `datos/datos_ini/wdbc_v1.csv`: copia obtenida con scikit-learn; etiqueta recodificada a malignant=1. No es el archivo original UCI byte por byte.
-- `datos/datos_limp/wdbc_v1_clean.csv`: datos validados, sin duplicados.
-- `datos/manifest.json`: versión y SHA-256 de datos.
-- `datos/diccionario.csv`: definición de las 30 variables y etiqueta.
-- `fuentes/datos_prep.py`: obtención y validación.
-- `fuentes/train.py`: Grid Search, evaluación y MLflow.
-- `fuentes/entrena.ipynb`: ejecución local o Colab.
-- `resultados/`: búsquedas completas, predicciones, partición y análisis estadístico.
-- `evidencias/`: capturas reales del experimento.
-- `mlruns/`: registros y modelos generados al ejecutar el entrenamiento; excluidos del historial Git.
-- `Reporte_tecnico_Actividad5.pdf`: análisis técnico.
-
-## Reproducción
-Python 3.12. Clonar el repositorio privado con una cuenta autorizada:
-```bash
-git clone https://github.com/carolynvargasgraniel-pixel/actividad-5-mlflow.git
-cd actividad-5-mlflow
+## Ejecución con Python
+Python 3.12 o posterior. Desde la raíz del proyecto:
 ```
-Desde la raíz del proyecto:
-```bash
-python -m venv .venv
-# Linux/macOS: source .venv/bin/activate
-# Windows: .venv\Scripts\activate
-python -m pip install -r requirements.txt
-python fuentes/datos_prep.py
-python fuentes/train.py
-python -m mlflow ui --backend-store-uri ./mlruns --port 5000
+python -m app.api
 ```
-Abrir http://127.0.0.1:5000. El entrenamiento crea dos ejecuciones nuevas con modelos, firma de entrada, métricas, parámetros, huellas de datos y código. No requiere GPU. Los tiempos dependen del hardware. Al mover una copia histórica de `mlruns`, sus URI absolutas de artefactos pueden requerir regenerar los experimentos: ejecutar `train.py` crea rutas locales válidas.
+Abrir http://localhost:8000. Para repetir entrenamiento: `python entrenar.py`. Para validar sin Docker: `python tests/validar.py`. Esta prueba inicia y detiene su propia API en el puerto 8765.
 
-Semillas: 42; split estratificado 80/20; cinco folds estratificados compartidos; selección por F1; umbral 0.5 fijo. La prueba se reserva hasta la evaluación final. La media CV del mejor candidato tiene sesgo de selección: no se interpreta como rendimiento externo. El bootstrap pareado y McNemar usan el mismo holdout.
+## Contenedor Docker
+Con Docker Engine o Docker Desktop activo:
+```
+docker build -t aclaraciones-ia:fase2 .
+docker run --rm --name aclaraciones-fase2 -p 127.0.0.1:8000:8000 aclaraciones-ia:fase2
+```
+Abrir http://localhost:8000. Alternativa: `docker compose up --build`.
+En una segunda terminal:
+```
+curl http://localhost:8000/health
+curl -X POST http://localhost:8000/predict -H "Content-Type: application/json" -d '{"texto":"La transferencia no aparece en destino"}'
+```
+En PowerShell, usar `curl.exe`. Para ejecutar construcción y pruebas automatizadas en Bash: `bash validar_docker.sh`. Genera evidencias/docker.log y evidencias/resultados.json. El script requiere Docker, curl y Python 3.12. La imagen usa Python 3.12-slim, un usuario sin privilegios y un healthcheck. PORT es configurable (predeterminado 8000); si se cambia, actualizar también el healthcheck y los puertos publicados.
 
-## Datos y licencia
-Wolberg, W., Mangasarian, O., Street, N., & Street, W. (1993). Breast Cancer Wisconsin (Diagnostic). UCI. https://doi.org/10.24432/C5DW2B. Licencia CC BY 4.0. Se distribuye una copia de scikit-learn con nombres legibles y etiqueta recodificada. Los CSV no contienen identificadores personales. No se añaden errores artificiales para simular limpieza.
+## Contrato de API
+POST /predict acepta exclusivamente `{"texto":"descripción"}` con application/json y texto de 5 a 2000 caracteres sin espacios extremos. Devuelve categoria, confianza, requiere_revision, evidencia, borrador y modelo. La confianza es una puntuación posterior de Naive Bayes, no una probabilidad calibrada de acierto. Se abstiene por debajo de 0.65 o con menos de dos palabras distintas reconocidas. Evidencia significa regla académica asociada; no prueba que un pago exista ni que se haya acreditado.
 
-## Versionamiento y acceso
-Repositorio privado: https://github.com/carolynvargasgraniel-pixel/actividad-5-mlflow. La persona que revise el trabajo debe tener acceso autorizado al repositorio.
+Errores: 400 JSON inválido o cuerpo vacío; 413 más de 16384 bytes; 415 tipo de contenido incorrecto; 422 estructura o texto inválido; 404 ruta inexistente. Siempre se exige revisión humana. Las reglas R01, R02 y R03 son simuladas y están en app/api.py.
 
-Los datos pequeños se versionan directamente con Git. El manifest permite comprobar integridad; CHANGELOG documenta decisiones. Los modelos y el almacén MLflow se regeneran con el script para evitar rutas locales y binarios en Git. Los identificadores de commits locales citados en el reporte corresponden al historial de desarrollo previo a la publicación; los commits remotos documentan los archivos publicados.
+## Pruebas y datos
+`data/train.csv`: 36 textos de entrenamiento. `data/test.csv`: 18 textos reservados (6 por clase), redactados por separado y sin duplicados exactos. Son ejemplos sintéticos, no expedientes reales ni evidencia de generalización. `evidencias/resultados.json` contiene las entradas, predicciones, matriz de confusión y pruebas HTTP efectivamente ejecutadas en Python. Métricas iniciales: accuracy 16/18, macro F1 0.9333 y 2 abstenciones. Las pruebas funcionales validan el contrato; las métricas se reportan por separado y no se convierten en aciertos artificiales.
 
-El cuaderno es autónomo: crea los archivos de trabajo y puede ejecutarse sin clonar el proyecto. Para usar el repositorio privado directamente desde Colab, se requiere autenticación; alternativamente, descargar el cuaderno y abrirlo mediante la opción Subir de Colab.
+El archivo .github/workflows/validacion.yml construye y prueba la imagen en GitHub Actions; su presencia no demuestra que la ejecución haya terminado satisfactoriamente. Revisar el estado y descargar evidencias-docker antes de declarar comprobada la ejecución del contenedor.
 
-## Referencias técnicas
-- https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html
-- https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html
-- https://scikit-learn.org/stable/modules/compose.html
-- https://mlflow.org/docs/3.5.0/ml/tracking/
-- https://mlflow.org/docs/3.5.0/api_reference/python_api/mlflow.sklearn.html
+## Despliegue en nube
+Consultar el manual Word entregado. Estrategia: contenedor en Azure Container Apps, puerto 8000 e interfaz y API en una misma aplicación. Solo para demostración con textos sintéticos. No se efectuó despliegue a una cuenta de Azure.
+
+## Uso de asistencia de IA para documentación
+Utilicé ChatGPT para estructurar el manual, describir el contrato de API y proponer casos extremos. Consulta empleada: «Redacta un manual replicable para desplegar este prototipo Python en Docker y Azure Container Apps; distingue pasos propuestos de pruebas ejecutadas». La documentación se contrastó con el código y los resultados de pruebas. No atribuyo este trabajo a Copilot.

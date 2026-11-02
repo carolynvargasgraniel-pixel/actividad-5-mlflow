@@ -1,0 +1,298 @@
+{
+  "entorno": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "base_url": "http://127.0.0.1:8765",
+  "datos": "36 entrenamiento y 18 prueba; sintéticos y sin duplicados exactos",
+  "total_pruebas": 35,
+  "aprobadas": 35,
+  "accuracy": 0.8888888888888888,
+  "macro_f1": 0.9333333333333332,
+  "metricas_por_clase": {
+    "devolucion": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "duplicado": {
+      "precision": 1.0,
+      "recall": 0.6666666666666666,
+      "f1": 0.8
+    },
+    "no_acreditado": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    }
+  },
+  "matriz_confusion": {
+    "devolucion": {
+      "devolucion": 6,
+      "duplicado": 0,
+      "no_acreditado": 0,
+      "revision_manual": 0
+    },
+    "duplicado": {
+      "devolucion": 0,
+      "duplicado": 4,
+      "no_acreditado": 0,
+      "revision_manual": 2
+    },
+    "no_acreditado": {
+      "devolucion": 0,
+      "duplicado": 0,
+      "no_acreditado": 6,
+      "revision_manual": 0
+    }
+  },
+  "predicciones": [
+    {
+      "texto": "La transferencia no aparece en destino",
+      "esperada": "no_acreditado",
+      "predicha": "no_acreditado",
+      "confianza": 0.980819
+    },
+    {
+      "texto": "El beneficiario no recibio el deposito",
+      "esperada": "no_acreditado",
+      "predicha": "no_acreditado",
+      "confianza": 0.974253
+    },
+    {
+      "texto": "Pago sin acreditacion en cuenta receptora",
+      "esperada": "no_acreditado",
+      "predicha": "no_acreditado",
+      "confianza": 0.879493
+    },
+    {
+      "texto": "Necesito rastrear el abono no recibido",
+      "esperada": "no_acreditado",
+      "predicha": "no_acreditado",
+      "confianza": 0.939783
+    },
+    {
+      "texto": "El importe enviado sigue sin reflejarse",
+      "esperada": "no_acreditado",
+      "predicha": "no_acreditado",
+      "confianza": 0.698752
+    },
+    {
+      "texto": "El deposito no llega a la cuenta",
+      "esperada": "no_acreditado",
+      "predicha": "no_acreditado",
+      "confianza": 0.974249
+    },
+    {
+      "texto": "Me hicieron doble cargo del pago",
+      "esperada": "duplicado",
+      "predicha": "duplicado",
+      "confianza": 0.8161
+    },
+    {
+      "texto": "Hay una transferencia duplicada",
+      "esperada": "duplicado",
+      "predicha": "revision_manual",
+      "confianza": 0.610381
+    },
+    {
+      "texto": "El pago se cobro dos veces",
+      "esperada": "duplicado",
+      "predicha": "duplicado",
+      "confianza": 0.952479
+    },
+    {
+      "texto": "Aparecen dos cargos del mismo importe",
+      "esperada": "duplicado",
+      "predicha": "duplicado",
+      "confianza": 0.923985
+    },
+    {
+      "texto": "El movimiento se repitio en la cuenta",
+      "esperada": "duplicado",
+      "predicha": "revision_manual",
+      "confianza": 0.372833
+    },
+    {
+      "texto": "Tengo dos pagos identicos",
+      "esperada": "duplicado",
+      "predicha": "duplicado",
+      "confianza": 0.962087
+    },
+    {
+      "texto": "Pido reembolso del pago rechazado",
+      "esperada": "devolucion",
+      "predicha": "devolucion",
+      "confianza": 0.89895
+    },
+    {
+      "texto": "Solicito reintegro de transferencia cancelada",
+      "esperada": "devolucion",
+      "predicha": "devolucion",
+      "confianza": 0.910836
+    },
+    {
+      "texto": "La cuenta invalida devolvio la transferencia",
+      "esperada": "devolucion",
+      "predicha": "devolucion",
+      "confianza": 0.728516
+    },
+    {
+      "texto": "Quiero recuperar el pago devuelto",
+      "esperada": "devolucion",
+      "predicha": "devolucion",
+      "confianza": 0.89895
+    },
+    {
+      "texto": "La operacion rechazada requiere devolucion",
+      "esperada": "devolucion",
+      "predicha": "devolucion",
+      "confianza": 0.830592
+    },
+    {
+      "texto": "Necesito devolver el importe cancelado",
+      "esperada": "devolucion",
+      "predicha": "devolucion",
+      "confianza": 0.954857
+    }
+  ],
+  "pruebas": [
+    {
+      "prueba": "Salud de API",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Interfaz servida e integración fetch con API",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Ruta inexistente",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Texto vacío",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Texto solo espacios",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Tipo numérico",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Campo ausente",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Campo adicional",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Lista como cuerpo",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "JSON mal formado",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Tipo de contenido incorrecto",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Exceso de caracteres",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Cuerpo sobredimensionado",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Abstención ante vocabulario desconocido",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Instrucción maliciosa sin ejecución ni copia al borrador",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Entrada con etiquetas HTML",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Límite superior válido",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Predicción y evidencia 1",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Predicción y evidencia 2",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Predicción y evidencia 3",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Predicción y evidencia 4",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Predicción y evidencia 5",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Predicción y evidencia 6",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Predicción y evidencia 7",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Predicción y evidencia 8",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Predicción y evidencia 9",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Predicción y evidencia 10",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Predicción y evidencia 11",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Predicción y evidencia 12",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Predicción y evidencia 13",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Predicción y evidencia 14",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Predicción y evidencia 15",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Predicción y evidencia 16",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Predicción y evidencia 17",
+      "resultado": "APROBADA"
+    },
+    {
+      "prueba": "Predicción y evidencia 18",
+      "resultado": "APROBADA"
+    }
+  ]
+}
