@@ -1,0 +1,12 @@
+{
+  "repositorio": "carolynvargasgraniel-pixel/actividad-5-mlflow",
+  "rama": "fase-ii-aclaraciones-2026",
+  "commit_probado": "3daec6251d066f309453288e0d44117dcd6fddfa",
+  "run_id": 41365176978,
+  "job_id": 125023707496,
+  "resultado": "success",
+  "entorno": "Ubuntu 24.04.5 en GitHub Actions, Docker 28.0.4",
+  "imagen": "sha256:2bc93608a128806887ac7c1f3459ff781f171762f75b1a4a1999f36371d79992",
+  "url": "https://github.com/carolynvargasgraniel-pixel/actividad-5-mlflow/actions/runs/41365176978",
+  "nota": "El contenedor se ejecutó en el host del runner y se probó por localhost. No se ejecutó en el equipo personal de la estudiante ni se desplegó a Azure."
+}

@@ -34,10 +34,10 @@ Errores: 400 JSON inválido o cuerpo vacío; 413 más de 16384 bytes; 415 tipo d
 ## Pruebas y datos
 `data/train.csv`: 36 textos de entrenamiento. `data/test.csv`: 18 textos reservados (6 por clase), redactados por separado y sin duplicados exactos. Son ejemplos sintéticos, no expedientes reales ni evidencia de generalización. `evidencias/resultados.json` contiene las entradas, predicciones, matriz de confusión y pruebas HTTP efectivamente ejecutadas en Python. Métricas iniciales: accuracy 16/18, macro F1 0.9333 y 2 abstenciones. Las pruebas funcionales validan el contrato; las métricas se reportan por separado y no se convierten en aciertos artificiales.
 
-El archivo .github/workflows/validacion.yml construye y prueba la imagen en GitHub Actions; su presencia no demuestra que la ejecución haya terminado satisfactoriamente. Revisar el estado y descargar evidencias-docker antes de declarar comprobada la ejecución del contenedor.
+La imagen se construyó y ejecutó correctamente en GitHub Actions, en el host Ubuntu 24.04.5 del runner con Docker 28.0.4. Las 35 pruebas contra localhost:8000 pasaron. Ejecución: https://github.com/carolynvargasgraniel-pixel/actividad-5-mlflow/actions/runs/41365176978 . Commit probado: 3daec6251d066f309453288e0d44117dcd6fddfa. Registro: evidencias/docker_github.log; identificación: evidencias/ejecucion.json. Esto comprueba ejecución local en el runner; no equivale a ejecución en el equipo personal ni a despliegue en Azure. El código de aplicación y el Dockerfile de la entrega coinciden con ese commit.
 
 ## Despliegue en nube
-Consultar el manual Word entregado. Estrategia: contenedor en Azure Container Apps, puerto 8000 e interfaz y API en una misma aplicación. Solo para demostración con textos sintéticos. No se efectuó despliegue a una cuenta de Azure.
+Consultar el manual Word y el documento de validación entregados por separado y en el ZIP de la actividad. Estrategia: contenedor en Azure Container Apps, puerto 8000 e interfaz y API en una misma aplicación. Solo para demostración con textos sintéticos. No se efectuó despliegue a una cuenta de Azure.
 
 ## Uso de asistencia de IA para documentación
 Utilicé ChatGPT para estructurar el manual, describir el contrato de API y proponer casos extremos. Consulta empleada: «Redacta un manual replicable para desplegar este prototipo Python en Docker y Azure Container Apps; distingue pasos propuestos de pruebas ejecutadas». La documentación se contrastó con el código y los resultados de pruebas. No atribuyo este trabajo a Copilot.
